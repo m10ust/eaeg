@@ -14,13 +14,49 @@ Enhanced Advanced Entropy Generator (EAEG) kernel module. This code indeed incor
 
 This version offers a more comprehensive approach to entropy generation by leveraging multiple hardware and software sources. The use of cryptographic hashing (SHA-512) for mixing and the integration of hardware RNG are particularly noteworthy improvements to other entropy generators such haveg, Random Number Generators (RNG), Jitter Entropy RNG (Jent). I can integrate with your hardware rng (HRNG). If you have one it will use it to be part of its entropy generation without user's intervention. 
 
-To compile and use this module:
+To compile and use this module from source:
 
-Save the code as eaeg.c (or download the file because I include both the sourcecode in a .txt file and the file.c ready to be compiled. You can also clone it precompiled (not suggested))
+Make sure you have "linux-headers" and "base-devel" installed:
+
+
+Debian
+```
+sudo apt install linux-headers base-devel
+```
+
+Arch
+```
+sudo pacman -S linux-headers base-devel
+```
+
+Fedora & CentOS 7 and older
+```
+sudo dnf install linux-headers base-devel
+```
+or yum if you preffer...
+
+openSUSE
+```
+sudo zypper install linux-headers base-devel
+```
+
+FreeBSD
+```
+sudo pkg install linux-headers base-devel
+```
+
+MacOS's brew
+```
+brew install linux-headers && brew install base-devel
+```
+(not sure about this one, proceed with care)
+
+
+Save the code as eaeg.c (or download the file because I include both the sourcecode in a .txt file and the file.c ready to be compiled. You can also clone it precompiled and load it using "sudo insmod eaeg.ko" (not suggested))
 
 Create a Makefile in the same directory with the content:
 
-Makefile 
+Create a file named "Makefile" and copy the following code in it. (The Makefile is included in the repo ready to be downloaded, I am only making those instructions for cautious people or people who wanna learn something while compiling this)
 ```
 obj-m += eaeg.o
   
